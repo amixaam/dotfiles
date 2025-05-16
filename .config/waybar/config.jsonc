@@ -1,0 +1,96 @@
+{
+
+
+  "layer": "top",
+  "modules-left": ["cpu", "memory", "hyprland/language"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["bluetooth", "network", "wireplumber", "battery", "clock"],
+
+  "cpu": {
+    "format": "{usage}% ",
+    "on-click": "ghostty -e btop",
+    "interval": 2,
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  "memory": {
+    "format": "{percentage}% ",
+    "on-click": "ghostty -e btop",
+	  "interval": 2,
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  "hyprland/language": {
+              "format": "{} ⌨️",
+              "format-en": "US",
+              "format-lv": "LV",
+              "on-click": "hyprctl switchxkblayout current next"
+      },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+  },
+  
+  "bluetooth": {
+	"format": "󰂯",
+  "format-disconnected": "󰂲",
+  "on-click": "ghostty -e bluetui",
+	"format-connected": "{device_alias} ",
+	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+},
+
+"network": {
+    "format": "{ifname}",
+    "format-icons": {
+      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "ethernet": "",
+      "disconnected": "󰤭"
+    },
+    "on-click": "nm-connection-editor",
+    "format-wifi": "{essid} {icon}",
+    "format-ethernet": "{icon}",
+    "format-disconnected": "{icon}",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-disconnected": "Disconnected",
+},
+
+
+
+  "wireplumber": {
+    "format": "{volume}% {icon}",
+    "tooltip-format": "󰋋 {node_name}",
+    "format-muted": ["󰖁"],
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "on-click": "helvum",
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% {icon}󱐋",
+    "format-icons": ["󰁺","󰁻","󰁼","󰁽", "󰁾", "󰁿" ,"󰂀", "󰂁", "󰂂", "󰁹"],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "tooltip-format":"{timeTo}\ncycles: {cycles}\npower draw: {power} W",
+    "interval": 1,
+  },
+
+  "clock": {
+    "format-alt": "{:%H:%M:%S}",
+    "interval": 1,
+    "tooltip": false,
+  }
+
+}
